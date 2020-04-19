@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benedict Cole - Weather dashboard</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="weather_dashboard.css">
+</head>
+
+
+<body class="body-color">
+
+    <!-- main content -->
+
+    <main class="container-fluid pb-5 content content-portfolio">
+
+        <div class="container-xl">
+
+            <div class="row shadow">
+
+                <div class="col-sm-12 pl-4 pr-4 pt-2 bg-weather">
+
+                    <div class="row mt-3 mr-3 ml-3">
+                        <div class="col-sm-5 col-md-6 col-lg-5 col-xl-4 p-2 mb-3 pr-sm-3">
+                            <form class="city-form">
+                                <input type="text" class="form-control form-control-lg form-control-custom" id="city"
+                                    placeholder="Enter city" name="trouble" onfocus="this.value=''" spellcheck="false">
+                            </form>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-1 col-xl-1 p-2 text-center">
+                            <a href="#" button type="button" id="query-submit-button"
+                                class="btn btn-lg btn-outline-light form-control-custom">Go</a>
+                        </div>
+
+                        <div class="col-sm-5 col-md-4 col-lg-4 col-xl-4 p-2 text-left">
+                            <a href="#" button type="button" id="clear-results-button"
+                                class="btn btn-lg btn-outline-light form-control-custom">Clear results</a>
+                        </div>
+
+
+                        <div class="col-12 d-flex flex-row flex-wrap p-2" id="new-button-row">
+                            <!-- dynamically generated buttons go here -->
+                        </div>
+                    </div>
+
+
+                    <div class="row m-2">
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                            <h5 class="text-white text-center text-sm-center text-md-left text-lg-left text-lg-left"
+                                id="city-main">
+                            </h5>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-center"
+                            id="todays-weather-icon">
+                            <div class="weather-icon"></div>
+                        </div>
+
+                        <div class="col-md-4 col-lg-4 col-xl-4 time">
+                            <h6 class="text-white text-center text-sm-right text-md-right text-lg-right text-lg-right display-4"
+                                id="currentTime">
+                            </h6>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- end of colored container -->
+
+            <div class="row bg-white pb-1 mb-5 shadow">
+
+                <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5 d-flex flex-row mt-4 mb-4">
+                    <div class="col">
+                        <h5 class="display-3 text-dark pl-2 pt-2 pb-2 text-center main-temp mb-4" id="temp"></h5>
+                        <h5 class="text-dark text-center day-of-week" id="day-of-week"></h5>
+                    </div>
+                    <div class="col wind">
+                        <div class="wind-icon justify-content-center" id="wind-icon"></div>
+                        <div class="text-center">
+                            <p class="wind-title">Wind</p>
+                        </div>
+                        <div class="text-center">
+                            <h5 id="wind-index" class="wind-speed"></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7 d-md-flex mt-4 mb-4">
+                    <div
+                        class="col text-center day-first five-day-tile pt-5 pt-sm-5 pt-md-0 pt-lg-0 pt-xl-0 pb-5 pb-sm-5 pb-md-0 pb-lg-0 pb-xl-0">
+                        <p><span class="text-dark day-of-week" id="day1"></span></p> <!-- day of week-->
+                        <div #id="day-1-icon" class="five-day-icon mt-2 mb-2 one"></div> <!-- icon -->
+                        <p id="temp1"><span class="temp"></span></p> <!-- temp -->
+                        <p id="hum1"></p> <!-- humid -->
+                    </div>
+                    <div
+                        class="col text-center day five-day-tile pt-5 pt-sm-5 pt-md-0 pt-lg-0 pt-xl-0 pb-5 pb-sm-5 pb-md-0 pb-lg-0 pb-xl-0">
+                        <p><span class="text-dark day-of-week" id="day2"></span></p> <!-- day of week-->
+                        <div id="day-2-icon" class="five-day-icon mt-2 mb-2 two"></div> <!-- icon -->
+                        <p id="temp2"><span class="temp"></span></p> <!-- temp -->
+                        <p id="hum2"></p> <!-- humid -->
+                    </div>
+                    <div
+                        class="col text-center day five-day-tile pt-5 pt-sm-5 pt-md-0 pt-lg-0 pt-xl-0 pb-5 pb-sm-5 pb-md-0 pb-lg-0 pb-xl-0">
+                        <p><span class="text-dark day-of-week" id="day3"></span></p> <!-- day of week-->
+                        <div id="day-3-icon" class="five-day-icon mt-2 mb-2 three"></div><!-- icon -->
+                        <p id="temp3"><span class="temp"></span></p> <!-- temp -->
+                        <p id="hum3"></p> <!-- humid -->
+                    </div>
+                    <div
+                        class="col text-center day five-day-tile pt-5 pt-sm-5 pt-md-0 pt-lg-0 pt-xl-0 pb-5 pb-sm-5 pb-md-0 pb-lg-0 pb-xl-0">
+                        <p><span class="text-dark day-of-week" id="day4"></span></p> <!-- day of week-->
+                        <div id="day-4-icon" class="five-day-icon mt-2 mb-2 four"></div> <!-- icon -->
+                        <p id="temp4"><span class="temp"></span></p> <!-- temp -->
+                        <p id="hum4"></p> <!-- humid -->
+                    </div>
+                    <div
+                        class="col text-center day five-day-tile pt-5 pt-sm-5 pt-md-0 pt-lg-0 pt-xl-0 pb-5 pb-sm-5 pb-md-0 pb-lg-0 pb-xl-0">
+                        <p><span class="text-dark day-of-week" id="day5"></span></p> <!-- day of week-->
+                        <div id="day-5-icon" class="five-day-icon mt-2 mb-2 five"></div> <!-- icon -->
+                        <p id="temp5"><span class="temp"></span></p> <!-- temp -->
+                        <p id="hum5"></p> <!-- humid -->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col bg-white shadow p-4 mb-5">
+                    <div class="row header-row-pages m-3">
+
+                        <div class="col padding-left">
+                            <h2>Read me</h2>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col padding-left padding-right mt-4">
+                            <p class="mb-4">This weather dashboard uses two seperate APIs from <a
+                                    href="https://openweathermap.org/api" target="_blank"
+                                    class="nounderline">OpenWeather</a> to deliver a current forecast and a five day
+                                forecast for over 200,000 cities worldwide.</p>
+                            <p class="mb-4">The application launches with one city, selected at random from a list of 15
+                                well known locations. You can enter any major city across the globe and retrieve weather
+                                data that is refeshed every 3 hours for the current forecast and every five hours for
+                                the 5 day forecast.</p>
+                            <p class="mb-4">In addition to weather conditions including temperature, wind
+                                speed/direction and humidity, there is a clock that utilises the <a
+                                    href="https://moment.github.io/luxon" target="_blank" class="nounderline">Luxon</a>
+                                date and time library to return a time that accurate to the millisecond.</p>
+                            <p class="mb-4">The dashboard has been designed inline with <a
+                                    href="https://material.io/design" target="_blank" class="nounderline">Google
+                                    Material Design</a> principles and features background images that correspond to
+                                local weather conditions. This add an additional layer of information to help you get a
+                                'feel' for the weather locally, much like AccuWeather's RealFeel©.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="row header-row-pages m-3">
+                        <div class="col padding-left">
+                            <h3>Technology</h3>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col padding-left padding-right mt-4">
+
+                            <p class="mb-4">This project was built using:</p>
+                            <ul>
+                                <li>HTML 5, Bootstrap 4.4.1, and custom CSS
+                                </li>
+                                <li>JavaScript
+                                </li>
+                                <li><a href="https://openweathermap.org/api" target="_blank"
+                                        class="nounderline">OpenWeather</a> API
+                                </li>
+                                <li><a href="https://moment.github.io/luxon" target="_blank"
+                                        class="nounderline">Luxon</a> date and time library
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </main>
+
+    <!-- End your project here-->
+
+
+    <!-- jQuery from jQuery cdn link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- custom script -->
+    <script type="text/javascript" src="weather_dashboard.js"></script>
+    <!-- luxon scripts -->
+    <script src="luxon.js"></script>
+
+
+
+</body>
+
+</html>
