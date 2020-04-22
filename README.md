@@ -17,7 +17,7 @@ This project was built using:
 - OpenWeather API
 - Luxon date and time library
 
-Link to project - https://benbugs.github.io/code_portfolio/weather_dashboard.html
+Link to project - https://benbugs.github.io/weather_dashboard/
 
 
 ![Screen grab of dashboard](weather_dashboard.jpg)
