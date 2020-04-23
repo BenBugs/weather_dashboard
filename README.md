@@ -1,3 +1,5 @@
+https://img.shields.io/badge/Project-Read%20Me%20Generator-blue
+
 # Weather Dashboard
 
 This weather dashboard uses two seperate APIs from OpenWeather to deliver a current forecast and a five day forecast for over 200,000 cities worldwide.
