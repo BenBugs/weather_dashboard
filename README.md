@@ -1,4 +1,6 @@
-https://img.shields.io/badge/Project-Read%20Me%20Generator-blue
+
+
+![Screen grab of dashboard](https://img.shields.io/badge/Project-Read%20Me%20Generator-blue)
 
 # Weather Dashboard
 
